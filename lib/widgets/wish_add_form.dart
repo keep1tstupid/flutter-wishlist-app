@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/material.dart';
 import 'package:flutter_project/pages/home_page.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+
+import '../data_storage.dart';
 
 // Create a Form widget.
 class AddWish extends StatefulWidget {
@@ -37,7 +40,7 @@ class AddWishState extends State<AddWish> {
   String title;
   String link;
 
-
+  var uuid = Uuid();
   //List<Wish> updatedList;
 
 
@@ -150,17 +153,18 @@ class AddWishState extends State<AddWish> {
             height: 100,
             alignment: Alignment.center,
             child: ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 // newWish.setPriority(selectedPriority);
                 // newWish.setPrice(selectedPrice);
                 Wish newWish = new Wish
-                  (title: title, link: link, priority: selectedPriority, price: selectedPrice);
-                List<Wish> lolka = [...widget.wishlist];
-                lolka.add(newWish);
-                print(lolka.length);
+                  (id: uuid.v4(), title: title, link: link,
+                    priority: selectedPriority, price: selectedPrice);
+                insertWish(newWish);
+                print(newWish.toString());
+                List<Wish> upd = await allWishes();
                 Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context) => Home(lolka)
+                        builder: (context) => Home(upd)
                     )
                 );
               },

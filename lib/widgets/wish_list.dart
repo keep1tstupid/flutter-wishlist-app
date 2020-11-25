@@ -3,7 +3,7 @@ import 'package:flutter_project/widgets/wish_card.dart';
 import '../material.dart';
 
 class WishList extends StatefulWidget {
-  List<Wish> wishlist;
+  final List<Wish> wishlist;
   WishList(this.wishlist);
 
   @override

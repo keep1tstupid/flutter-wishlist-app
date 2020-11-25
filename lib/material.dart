@@ -1,5 +1,6 @@
 
 class Wish {
+  String id;
   String title;
   String priority;
   String price;
@@ -7,7 +8,7 @@ class Wish {
 
   // image?
 
-  Wish({ this.title, this.priority, this.price, this.link, });
+  Wish({ this.id, this.title, this.priority, this.price, this.link, });
 
   void setPriority(String newPriority) {
     this.priority = newPriority;
@@ -15,5 +16,22 @@ class Wish {
 
   void setPrice(String newPrice) {
     this.price = newPrice;
+  }
+
+  @override
+  String toString() {
+    return '"wish" : { "id" : $id, "title" : $title, '
+        '"priority" : $priority, "price" : '
+        '$price, "link" : $link}';
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'priority': priority,
+      'price': price,
+      'link': link,
+    };
   }
 }

@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/pages/add_page.dart';
 import 'package:flutter_project/widgets/wish_list.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import '../data_storage.dart';
 import '../material.dart';
 
 
@@ -10,10 +13,11 @@ class Home extends StatefulWidget {
   final List<Wish> wishlist;
   Home(this.wishlist);
 
+  //List<Wish> wishlist;
+
   @override
   _HomeState createState() => _HomeState();
 }
-
 
 class _HomeState extends State<Home> {
 
@@ -33,8 +37,8 @@ class _HomeState extends State<Home> {
         //   ),
         // ],
       ),
-      body: Center(
-          child: widget.wishlist.isNotEmpty ? WishList(widget.wishlist) : Text("no wishes yet"),
+      body: SingleChildScrollView(
+          child: widget.wishlist != null ? WishList(widget.wishlist) : Text("no wishes yet"),
       ),
       //ListOfWishes(widget.wishlist),
       bottomSheet: Container(
