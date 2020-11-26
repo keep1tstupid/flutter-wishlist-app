@@ -39,7 +39,7 @@ Future<List<Wish>> allWishes() async {
   // Convert the List<Map<String, dynamic> into a List<Wish>.
   return List.generate(maps.length, (i) {
     return Wish(
-      //id: maps[i]['id'],
+      id: maps[i]['id'],
       title: maps[i]['title'],
       priority: maps[i]['priority'],
       price: maps[i]['price'],

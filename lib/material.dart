@@ -8,7 +8,7 @@ class Wish {
 
   // image?
 
-  Wish({ this.id, this.title, this.priority, this.price, this.link, });
+  Wish({this.id, this.title, this.priority, this.price, this.link});
 
   void setPriority(String newPriority) {
     this.priority = newPriority;
@@ -16,6 +16,10 @@ class Wish {
 
   void setPrice(String newPrice) {
     this.price = newPrice;
+  }
+
+  String getId() {
+    return this.id;
   }
 
   @override

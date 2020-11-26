@@ -3,7 +3,9 @@ import '../material.dart';
 
 class WishCard extends StatefulWidget {
   final Wish wish;
-  WishCard(this.wish);
+  final Function onDelete;
+  WishCard(this.wish, this.onDelete);
+
 
   @override
   _WishCardState createState() => _WishCardState();
@@ -14,10 +16,35 @@ class _WishCardState extends State<WishCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(5.0),
       child: Container(
-        child: Center(
-          child: Text(widget.wish.title + " & " + widget.wish.price),
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+            children: <Widget>[
+              Text(
+                widget.wish.title + " & " + widget.wish.price,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Spacer(),
+              IconButton(
+                alignment: Alignment.centerRight,
+                icon: Icon(Icons.edit),
+                iconSize: 24.0,
+                color: Colors.white,
+                onPressed: () {},
+              ),
+              IconButton(
+                alignment: Alignment.centerRight,
+                icon: Icon(Icons.delete),
+                iconSize: 24.0,
+                color: Colors.white,
+                onPressed: () async {
+                  Wish current = widget.wish;
+                  String id = current.getId();
+                  widget.onDelete(id);
+                },
+              ),
+            ]
         ),
         height: 100.0,
         decoration: BoxDecoration(

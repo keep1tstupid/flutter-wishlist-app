@@ -28,6 +28,7 @@ dependencies:
   path:
   image_picker: ^0.6.6+5
   uuid: 2.2.2
+  event: ^1.1.4
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -4,10 +4,8 @@ import 'package:flutter_project/material.dart';
 import 'package:flutter_project/pages/home_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
-
 import '../data_storage.dart';
 
-// Create a Form widget.
 class AddWish extends StatefulWidget {
   final List<Wish> wishlist;
   AddWish(this.wishlist);
@@ -27,23 +25,16 @@ class AddWishState extends State<AddWish> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-
   File _image;
   final picker = ImagePicker();
-
   List<String> priorities = ["low", "medium", "high", ];
   String selectedPriority;
-
   List<String> prices = ["0 - 100", "100 - 500", "500 - 1000", "1000 + ", ];
   String selectedPrice;
-
   String title;
   String link;
 
   var uuid = Uuid();
-  //List<Wish> updatedList;
-
-
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -59,8 +50,6 @@ class AddWishState extends State<AddWish> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-
 
     return Form(
       key: _formKey,
@@ -79,7 +68,6 @@ class AddWishState extends State<AddWish> {
               }
               return null;
             },
-            //onSaved: (value) => setState(() => newWish.title = value),
             onChanged: (value) {
               title = value;
             },

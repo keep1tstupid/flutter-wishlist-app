@@ -13,14 +13,11 @@ class Home extends StatefulWidget {
   final List<Wish> wishlist;
   Home(this.wishlist);
 
-  //List<Wish> wishlist;
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +35,9 @@ class _HomeState extends State<Home> {
         // ],
       ),
       body: SingleChildScrollView(
-          child: widget.wishlist != null ? WishList(widget.wishlist) : Text("no wishes yet"),
+          child: widget.wishlist != null
+              ? WishList(widget.wishlist)
+              : Text("no wishes yet"),
       ),
       //ListOfWishes(widget.wishlist),
       bottomSheet: Container(
