@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/pages/update_page.dart';
 import '../material.dart';
 
 class WishCard extends StatefulWidget {
@@ -31,7 +32,12 @@ class _WishCardState extends State<WishCard> {
                 icon: Icon(Icons.edit),
                 iconSize: 24.0,
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder:
+                  (context) => UpdateWish(widget.wish))
+                  );
+                },
               ),
               IconButton(
                 alignment: Alignment.centerRight,

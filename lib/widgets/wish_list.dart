@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/pages/update_page.dart';
 import 'package:flutter_project/widgets/wish_card.dart';
 import '../data_storage.dart';
 import '../material.dart';
@@ -22,6 +23,7 @@ class _WishListState extends State<WishList> {
       _wishlist = newWishes;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
