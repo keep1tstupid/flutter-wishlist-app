@@ -13,18 +13,22 @@ class EditWish extends StatefulWidget {
   EditWish(this.wish);
 
   @override
-  _EditWishState createState() => _EditWishState();
+  _EditWishState createState() => _EditWishState(wish);
+
 }
 
 class _EditWishState extends State<EditWish> {
+  Wish _wishState;
+  _EditWishState(this._wishState);
+
   final _formKey = GlobalKey<FormState>();
   final picker = ImagePicker();
   List<String> priorities = ["low", "medium", "high", ];
   List<String> prices = ["0 - 100", "100 - 500", "500 - 1000", "1000 + ", ];
-  String title;
-  String priority;
-  String price;
-  String link;
+  // String title;
+  // String priority;
+  // String price;
+  // String link;
   File _image;
 
   Future getImage() async {
@@ -41,18 +45,23 @@ class _EditWishState extends State<EditWish> {
 
   @override
   Widget build(BuildContext context) {
-    title = widget.wish.title;
-    priority = widget.wish.priority;
-    price = widget.wish.price;
-    link = widget.wish.link;
+    // title = _wishState.title;
+    // priority = _wishState.priority;
+    // price = _wishState.price;
+    // link = _wishState.link;
+
+    if (_wishState == null) {
+      return Text('Loading...');
+    }
 
     return Form(
       key: _formKey,
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
-            initialValue: title,
+            initialValue: _wishState.title,
             decoration: InputDecoration(
               filled: true,
               labelText: 'Title',
@@ -64,15 +73,15 @@ class _EditWishState extends State<EditWish> {
               return null;
             },
             onChanged: (value) {
-              title = value;
+              _wishState.title = value;
             },
           ),
           DropdownButton<String> (
             hint: Text('Select priority'),
-            value: priority,
+            value: _wishState.priority,
             onChanged: (String value) {
               setState(() {
-                priority = value;
+                _wishState.priority = value;
               });
             },
             items: priorities.map((String priority) {
@@ -91,10 +100,10 @@ class _EditWishState extends State<EditWish> {
           ),
           DropdownButton<String> (
             hint: Text('Select price category'),
-            value: price,
+            value: _wishState.price,
             onChanged: (String value) {
               setState(() {
-                price = value;
+                _wishState.price = value;
               });
             },
             items: prices.map((String price) {
@@ -112,14 +121,14 @@ class _EditWishState extends State<EditWish> {
             }).toList(),
           ),
           TextFormField(
-            initialValue: link,
+            initialValue: _wishState.link,
             decoration: InputDecoration(
               filled: true,
               hintText: 'Enter a link...',
               labelText: 'https:// ... ',
             ),
             onChanged: (value) {
-              link = value;
+              _wishState.link = value;
             },
           ),
           Container(
@@ -138,8 +147,8 @@ class _EditWishState extends State<EditWish> {
             child: ElevatedButton(
               onPressed: () async {
                 Wish updWish = new Wish
-                  (id: widget.wish.id, title: title, link: link,
-                    priority: priority, price: price);
+                  (id: _wishState.id, title: _wishState.title, link: _wishState.link,
+                    priority: _wishState.priority, price: _wishState.price);
                 updateWish(updWish);
                 List<Wish> upd = await allWishes();
                 Navigator.push(context,

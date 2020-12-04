@@ -8,7 +8,6 @@ import 'package:sqflite/sqflite.dart';
 import '../data_storage.dart';
 import '../material.dart';
 
-
 class Home extends StatefulWidget {
   final List<Wish> wishlist;
   Home(this.wishlist);
@@ -18,6 +17,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  checkList() {
+    print(widget.wishlist.length);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +38,13 @@ class _HomeState extends State<Home> {
         // ],
       ),
       body: SingleChildScrollView(
-          child: widget.wishlist != null
-              ? WishList(widget.wishlist)
-              : Text("no wishes yet"),
-      ),
+          child:
+              widget.wishlist.isNotEmpty
+                  ? WishList(widget.wishlist)
+                  : Center(
+                      child:
+                      Text("no wishes yet"),
+                    )),
       //ListOfWishes(widget.wishlist),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -47,9 +53,9 @@ class _HomeState extends State<Home> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder:
-                (context) => CreateNew(widget.wishlist))
-            );
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CreateNew(widget.wishlist)));
           },
           child: Text('ADD NEW'),
         ),
