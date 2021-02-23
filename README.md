@@ -1,16 +1,10 @@
-# flutter_project
+# Wish-list list app
 
-A new Flutter project.
+## Progress updates (in reversed order)
 
-## Getting Started
+### 23.2.2021 state: 
+Reviewed project I've started last year, removed some unused code and added colors for cards (color depends on the price category)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![ScreenShot](screenshots/23.2.2021_1.png) 
+![ScreenShot](screenshots/23.2.2021_2.png) 
+![ScreenShot](screenshots/23.2.2021_3.png) 

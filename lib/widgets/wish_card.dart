@@ -14,6 +14,31 @@ class WishCard extends StatefulWidget {
 
 class _WishCardState extends State<WishCard> {
 
+  List<Color> getColors(Wish wish) {
+    if (wish.price == "0 - 100") {
+        return [
+          Colors.white,
+          Colors.lightGreen.shade300,
+        ];
+    }
+    if (wish.price == "100 - 500") {
+        return [
+          Colors.white,
+          Colors.deepOrangeAccent.shade200,
+        ];
+      }
+    if (wish.price == "500 - 1000") {
+        return [
+          Colors.white,
+          Colors.greenAccent.shade200,
+        ];
+    }
+    return [
+      Colors.white,
+      Colors.deepPurple.shade300,
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,16 +81,13 @@ class _WishCardState extends State<WishCard> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10.0),
-            bottomRight: Radius.circular(50.0),
-            topRight: Radius.circular(50.0),
+            bottomRight: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
           ),
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Colors.white,
-              Colors.deepPurple.shade500,
-            ],
+            colors: getColors(widget.wish),
           ),
           boxShadow: [
             BoxShadow(

@@ -18,6 +18,10 @@ class Wish {
     this.price = newPrice;
   }
 
+  String getPrice() {
+    return this.price;
+  }
+
   String getId() {
     return this.id;
   }

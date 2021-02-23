@@ -33,7 +33,7 @@ Future<List<Wish>> allWishes() async {
   // Get a reference to the database.
   final Database db = await database;
 
-  // Query the table for all The Dogs.
+  // Query the table for all wishes.
   final List<Map<String, dynamic>> maps = await db.query('wish');
 
   // Convert the List<Map<String, dynamic> into a List<Wish>.
@@ -57,7 +57,7 @@ Future<void> updateWish(Wish wish) async {
   // Get a reference to the database.
   final db = await database;
 
-  // Update the given Dog.
+  // Update the given wish.
   await db.update(
     'wish',
     wish.toMap(),

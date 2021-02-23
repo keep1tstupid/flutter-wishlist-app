@@ -25,10 +25,6 @@ class _EditWishState extends State<EditWish> {
   final picker = ImagePicker();
   List<String> priorities = ["low", "medium", "high", ];
   List<String> prices = ["0 - 100", "100 - 500", "500 - 1000", "1000 + ", ];
-  // String title;
-  // String priority;
-  // String price;
-  // String link;
   File _image;
 
   Future getImage() async {
@@ -45,10 +41,6 @@ class _EditWishState extends State<EditWish> {
 
   @override
   Widget build(BuildContext context) {
-    // title = _wishState.title;
-    // priority = _wishState.priority;
-    // price = _wishState.price;
-    // link = _wishState.link;
 
     if (_wishState == null) {
       return Text('Loading...');

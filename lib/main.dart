@@ -6,8 +6,6 @@ import 'package:sqflite/sqflite.dart';
 
 import 'material.dart';
 
-// void main() => runApp(MyApp());
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   print(await getDatabasesPath());
@@ -33,7 +31,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
